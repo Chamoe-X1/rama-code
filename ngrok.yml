@@ -1,0 +1,8 @@
+version: 3
+agent:
+  authtoken: 3IZOuObNz8TU8nxsp8ldCw6FFfo_53aGHt9j9vprfdpDa41J9
+endpoints:
+  - name: rama
+    url: https://rama.ngrok-free.dev
+    upstream:
+      url: 80

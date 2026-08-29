@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAMA CHAMOE | Creative Tools & HQ Media Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showSection('home', document.querySelector('.nav-links a:first-child'))">
+                <span>RAMA YAFIQ</span>
+                <span class="logo-badge">PRO</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="javascript:void(0)" class="active" onclick="showSection('home', this)">Home</a></li>
+                <li><a href="javascript:void(0)" onclick="showSection('tools', this)">Tools</a></li>
+                <li><a href="javascript:void(0)" onclick="showSection('resources', this)">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="section-tag-pill"><i class="fas fa-bolt"></i> CREATIVE TOOLS & MEDIA SUITE</div>
+            <h1>WELCOME HUMAN EARTH<br><span class="highlight">SELAMAT DATANG MANUSIA BUMI</span></h1>
+            <p class="subtitle">Platform Creator & Tool Media Kualitas Tinggi Tanpa Kompresi</p>
+            <p class="description">
+                Download berbagai macam tools editor, optimasi bitrate video TikTok HQ, AI Background Removal HD, 
+                Media Upscaler 4K, dan Universal HD Downloader bebas watermark.
+            </p>
+
+            <div class="hero-action-buttons">
+                <a href="javascript:void(0)" onclick="showSection('tools', document.querySelectorAll('.nav-links a')[1])" class="btn-hero-primary">
+                    <i class="fas fa-wand-magic-sparkles"></i> Buka Creative Tools
+                </a>
+                <a href="javascript:void(0)" onclick="showSection('resources', document.querySelectorAll('.nav-links a')[2])" class="btn-hero-secondary">
+                    <i class="fas fa-folder-open"></i> Akses Resources
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.youtube.com/@RamaYafiq" target="_blank" rel="noopener noreferrer" class="social-card youtube"><i class="fab fa-youtube"></i> <span>YouTube</span></a>
+                <a href="https://www.tiktok.com/@ramayafiq._" target="_blank" rel="noopener noreferrer" class="social-card tiktok"><i class="fab fa-tiktok"></i> <span>TikTok</span></a>
+                <a href="https://www.instagram.com/rramayp_/" target="_blank" rel="noopener noreferrer" class="social-card instagram"><i class="fab fa-instagram"></i> <span>Instagram</span></a>
+                <a href="https://sociabuzz.com/ramaaayp" target="_blank" rel="noopener noreferrer" class="social-card socialbuzz"><i class="fas fa-bolt"></i> <span>SocialBuzz</span></a>
+                <a href="https://wa.me/6285766257864" target="_blank" rel="noopener noreferrer" class="social-card whatsapp"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS SECTION -->
+    <section id="tools">
+        <div class="section-header-area">
+            <div class="section-tag-pill"><i class="fas fa-cube"></i> Creative Tools Suite</div>
+            <h2 class="section-title">Creative Tools & Utilities</h2>
+            <p class="section-subtitle">Kumpulan tool pengolah media berbasis browser tanpa watermark dan lossless.</p>
+            <div class="search-tools-box">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" id="toolSearchInput" placeholder="Search tools..." oninput="filterTools(this.value)">
+            </div>
+        </div>
+
+        <div class="tools-grid" id="toolsGrid">
+            <!-- Tool 1 -->
+            <div class="tool-card" onclick="openHqModal()" data-title="tiktok quality hq method upload bypass">
+                <div class="tool-card-top">
+                    <div class="tool-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="tool-badge-pill hot">v3.5.0</span>
+                </div>
+                <h3>TikTok Quality HQ Method</h3>
+                <p>Bypass kompresi server TikTok dengan metode WMV, Binary GOP H.264 & 60 FPS profile agar video tetap jernih dan tajam.</p>
+                <div class="tool-card-footer">
+                    <span class="tool-cta-text"><i class="fas fa-rocket"></i> Buka Tool</span>
+                    <div class="tool-chevron-icon"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="tool-card" onclick="openUpscalerModal()" data-title="qualitelio media upscaler ai 4k hd enhancer">
+                <div class="tool-card-top">
+                    <div class="tool-icon-wrapper" style="color: #06b6d4; background: #132427; border-color: #1e3f45;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <span class="tool-badge-pill" style="color: #06b6d4; border-color: rgba(6,182,212,0.3); background: rgba(6,182,212,0.1);">2X / 4X / 8X</span>
+                </div>
+                <h3>Qualitelio Enhancer (Local AI)</h3>
+                <p>AI Super-Resolution & Unsharp-Masking berjalan langsung di browser untuk mempertajam foto ke resolusi Ultra Clear.</p>
+                <div class="tool-card-footer">
+                    <span class="tool-cta-text" style="color: #06b6d4;"><i class="fas fa-expand"></i> Buka Tool</span>
+                    <div class="tool-chevron-icon"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Tool 3 -->
+            <div class="tool-card" onclick="openBgModal()" data-title="ai remove background adobe firefly hd matting transparent 100mb">
+                <div class="tool-card-top">
+                    <div class="tool-icon-wrapper" style="color: #ec4899; background: #26151e; border-color: #451e33;"><i class="fa-solid fa-scissors"></i></div>
+                    <span class="tool-badge-pill" style="color: #ec4899; border-color: rgba(236,72,153,0.3); background: rgba(236,72,153,0.1);">Adobe Express</span>
+                </div>
+                <h3>AI Remove Background</h3>
+                <p>Matting akurat menggunakan ekosistem eksternal untuk deteksi tepi halus, feathering natural, dan ekspor transparent PNG.</p>
+                <div class="tool-card-footer">
+                    <span class="tool-cta-text" style="color: #ec4899;"><i class="fas fa-wand-sparkles"></i> Buka Tool</span>
+                    <div class="tool-chevron-icon"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Tool 4 -->
+            <div class="tool-card" onclick="openTiktokDlModal()" data-title="tiktok download hd video no watermark mp3 tikwm">
+                <div class="tool-card-top">
+                    <div class="tool-icon-wrapper" style="color: #00f2ea; background: #0c1c1c; border-color: #173636;"><i class="fab fa-tiktok"></i></div>
+                    <span class="tool-badge-pill" style="color: #00f2ea; border-color: rgba(0,242,234,0.3); background: rgba(0,242,234,0.1);">SSSTik Routing</span>
+                </div>
+                <h3>TikTok Download HD</h3>
+                <p>Auto-routing sistem: Paste link TikTok, langsung terhubung ke prosesor eksternal untuk download tanpa watermark.</p>
+                <div class="tool-card-footer">
+                    <span class="tool-cta-text" style="color: #00f2ea;"><i class="fas fa-download"></i> Buka Tool</span>
+                    <div class="tool-chevron-icon"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Tool 5 -->
+            <div class="tool-card" onclick="openYtDlModal()" data-title="youtube download hd 4k 1080p 720p mp3 audio">
+                <div class="tool-card-top">
+                    <div class="tool-icon-wrapper" style="color: #ff3333; background: #281010; border-color: #4e1919;"><i class="fab fa-youtube"></i></div>
+                    <span class="tool-badge-pill" style="color: #ff4d4d; border-color: rgba(255,0,0,0.3); background: rgba(255,0,0,0.1);">Y2Mate Routing</span>
+                </div>
+                <h3>YouTube Download HD</h3>
+                <p>Auto-routing sistem: Paste link YouTube, sistem ekstrak ID video dan langsung mengarahkan ke halaman Y2Mate.</p>
+                <div class="tool-card-footer">
+                    <span class="tool-cta-text" style="color: #ff4d4d;"><i class="fas fa-download"></i> Buka Tool</span>
+                    <div class="tool-chevron-icon"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+            <!-- Tool 6 -->
+            <div class="tool-card" onclick="openIgDlModal()" data-title="instagram download hd reels post stories photo">
+                <div class="tool-card-top">
+                    <div class="tool-icon-wrapper" style="color: #f43f5e; background: #270e1c; border-color: #4d1835;"><i class="fab fa-instagram"></i></div>
+                    <span class="tool-badge-pill" style="color: #f43f5e; border-color: rgba(244,63,94,0.3); background: rgba(244,63,94,0.1);">SnapInsta & FastDL</span>
+                </div>
+                <h3>Instagram Download HD</h3>
+                <p>Auto-routing sistem ke SnapInsta (untuk video/reels) dan FastDL (untuk foto) secara otomatis dari satu link.</p>
+                <div class="tool-card-footer">
+                    <span class="tool-cta-text" style="color: #f43f5e;"><i class="fas fa-download"></i> Buka Tool</span>
+                    <div class="tool-chevron-icon"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES SECTION -->
+    <section id="resources">
+        <div class="section-header-area">
+            <div class="section-tag-pill"><i class="fas fa-box-archive"></i> Editor Resources</div>
+            <h2 class="section-title">Presets & Creator Assets</h2>
+            <p class="section-subtitle">File project SOCIALBUZZ COMUNITY</p>
+        </div>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop" alt="Resource" class="resource-image">
+                <div class="resource-content">
+                    <span class="resource-tag">After Effect Project</span>
+                    <h3>After Effect Project</h3>
+                    <p class="sub-judul">Color Grading & Sharpness Formula</p>
+                    <div class="resource-description">
+                        <h4>Deskripsi</h4>
+                        <p>Preset formula ketajaman 4K Ultra Smooth untuk After Effect agar video kamu terlihat jernih di FYP TikTok.</p>
+                    </div>
+                    <div class="resource-body">Termasuk file .aep</div>
+                    <div class="resource-actions">
+                        <a href="javascript:void(0)" onclick="triggerAssetDownload('AM_Preset_HQ_Formula.xml')" class="btn-res-primary"><i class="fas fa-download"></i> Download After Effect Project</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Kartu resource lainnya sama persis seperti versi awal -->
+        </div>
+    </section>
+
+    <footer>
+        <p>RAMA YAFIQ COOL TOOLS    <i class="fas fa-heart" style="color: #ec4899;"></i>   untuk Komunitas Editor</p>
+    </footer>
+
+    <!-- MODALS (Sesuai original 100%) -->
+    
+    <!-- Modal 1: TikTok HQ -->
+    <div class="modal-overlay" id="hqModalOverlay" onclick="handleOverlayClick(event, 'hqModalOverlay')">
+        <div class="app-modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <div class="modal-badge-icon"><span class="mb-text">HQ</span><span class="mb-ver">3.5.0</span></div>
+                    <div class="modal-header-titles"><h3>Quality Method</h3><p>TikTok HQ Upload</p></div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeModal('hqModalOverlay')"><i class="fas fa-xmark"></i></button>
+            </div>
+            
+            <div class="file-dropzone" id="hqDropzone" onclick="document.getElementById('hqFileInput').click()">
+                <input type="file" id="hqFileInput" accept="video/*" style="display: none;" onchange="handleHqFileSelect(this.files[0])">
+                <div class="dropzone-icon"><i class="fa-solid fa-file-arrow-up"></i></div>
+                <div class="dropzone-title">Drag & drop video here or click to select</div>
+            </div>
+
+            <div class="file-selected-box" id="hqFileSelectedBox">
+                <div class="fsb-left"><i class="fa-solid fa-video"></i><div><div class="fsb-name" id="hqFileName">video.mp4</div></div></div>
+                <button type="button" class="fsb-remove" onclick="removeHqFile()"><i class="fas fa-trash-can"></i></button>
+            </div>
+
+            <!-- TOMBOL RESOLUSI YANG BENAR ADA DI SINI -->
+            <div class="segmented-row">
+                <button type="button" class="seg-btn active" onclick="setHqResolution('1080P', this)">1080P HQ</button>
+                <button type="button" class="seg-btn" onclick="setHqResolution('4K', this)">4K Ultra HD</button>
+            </div>
+            <!-- SELESAI -->
+
+            <button type="button" class="btn-action-block" id="hqProcessBtn" onclick="startHqProcessing()"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>Process Video</span></button>
+            
+            <div class="processing-box" id="hqProcessingView" style="display: none;">
+                <div class="progress-bar-wrap"><div class="progress-bar-fill" id="hqProgressFill"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: AI Enhancer -->
+    <div class="modal-overlay" id="upscalerModalOverlay" onclick="handleOverlayClick(event, 'upscalerModalOverlay')">
+        <div class="app-modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <div class="modal-badge-icon" style="color: #06b6d4; border-color: #1e3f45;"><span class="mb-text">4K</span><span class="mb-ver">AI</span></div>
+                    <div class="modal-header-titles"><h3>Qualitelio Enhancer</h3><p>Super-Resolution Media Upscaler (Local Process)</p></div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeModal('upscalerModalOverlay')"><i class="fas fa-xmark"></i></button>
+            </div>
+
+            <div class="file-dropzone" id="upscaleDropzone" onclick="document.getElementById('upscaleFileInput').click()">
+                <input type="file" id="upscaleFileInput" accept="image/*" style="display: none;" onchange="handleUpscaleFileSelect(this.files[0])">
+                <div class="dropzone-icon" style="color: #06b6d4;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="dropzone-title">Pilih Foto untuk Dipertajam (Diproses di Browser)</div>
+            </div>
+
+            <div class="file-selected-box" id="upscaleFileSelectedBox">
+                <div class="fsb-left"><i class="fa-solid fa-image" style="color: #06b6d4;"></i><div><div class="fsb-name" id="upscaleFileName">photo.png</div></div></div>
+                <button type="button" class="fsb-remove" onclick="removeUpscaleFile()"><i class="fas fa-trash-can"></i></button>
+            </div>
+
+            <div class="segmented-row">
+                <button type="button" class="seg-btn active" id="btnScale2x" onclick="selectUpscaleFactor(2)">2X HD</button>
+                <button type="button" class="seg-btn" id="btnScale4x" onclick="selectUpscaleFactor(4)">4X Ultra HD</button>
+            </div>
+
+            <div id="upscalePreviewArea" style="display: none;">
+                <div class="split-slider-container" id="upscaleSplitContainer">
+                    <img id="upscaleImgBefore" class="split-img-before" alt="Original">
+                    <div class="split-img-after-wrap" id="upscaleAfterWrap"><img id="upscaleImgAfter" class="split-img-after" alt="Upscaled"></div>
+                    <div class="split-handle" id="upscaleSplitHandle"><i class="fas fa-left-right"></i></div>
+                </div>
+                <a href="javascript:void(0)" class="btn-action-block ready" onclick="downloadUpscaledImage()" style="background: linear-gradient(135deg, #06b6d4, #0284c7);"><i class="fa-solid fa-download"></i> <span>Download Ultra HD Result</span></a>
+            </div>
+
+            <button type="button" class="btn-action-block" id="upscaleProcessBtn" onclick="startUpscaleProcessing()"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>Enhance to Ultra HD</span></button>
+        </div>
+    </div>
+
+    <!-- Modal 3: AI Background (External) -->
+    <div class="modal-overlay" id="bgModalOverlay" onclick="handleOverlayClick(event, 'bgModalOverlay')">
+        <div class="app-modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <div class="modal-badge-icon" style="color: #ec4899;"><i class="fa-solid fa-scissors"></i></div>
+                    <div class="modal-header-titles"><h3>AI Remove Background</h3><p>Adobe Express AI</p></div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeModal('bgModalOverlay')"><i class="fas fa-xmark"></i></button>
+            </div>
+            <a href="https://new.express.adobe.com/home/tools/remove-background?colorScheme=light" target="_blank" class="btn-action-block ready" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Buka Adobe Express BG Remover</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal 4: TikTok Routing -->
+    <div class="modal-overlay" id="tiktokDlModalOverlay" onclick="handleOverlayClick(event, 'tiktokDlModalOverlay')">
+        <div class="app-modal tiktok-modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <div class="modal-badge-icon"><i class="fab fa-tiktok" style="font-size: 1.4rem;"></i></div>
+                    <div class="modal-header-titles"><h3>TikTok Download HD</h3><p>Auto-Route ke SSSTik</p></div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeModal('tiktokDlModalOverlay')"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div style="margin-bottom: 18px;">
+                <label class="field-label" style="display: block;">PASTE TIKTOK URL:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="tiktokUrlInput" placeholder="https://www.tiktok.com/@username/video/..." style="flex: 1; background: #1c2216; border: 1px solid #2d3820; border-radius: 12px; padding: 13px 16px; color: #fff;">
+                    <button type="button" class="btn-action-block ready" style="width: auto; padding: 0 22px;" onclick="routeTikTok()">
+                        <i class="fas fa-bolt"></i> Route
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: YouTube Routing -->
+    <div class="modal-overlay" id="ytDlModalOverlay" onclick="handleOverlayClick(event, 'ytDlModalOverlay')">
+        <div class="app-modal yt-modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <div class="modal-badge-icon"><i class="fab fa-youtube" style="font-size: 1.4rem;"></i></div>
+                    <div class="modal-header-titles"><h3>YouTube Download HD</h3><p>Auto-Route ke Y2Mate</p></div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeModal('ytDlModalOverlay')"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div style="margin-bottom: 18px;">
+                <label class="field-label" style="display: block;">PASTE YOUTUBE URL:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="ytUrlInput" placeholder="https://www.youtube.com/watch?v=..." style="flex: 1; background: #1c2216; border: 1px solid #2d3820; border-radius: 12px; padding: 13px 16px; color: #fff;">
+                    <button type="button" class="btn-action-block ready" style="width: auto; padding: 0 22px;" onclick="routeYouTube()">
+                        <i class="fas fa-search"></i> Route
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: IG Routing -->
+    <div class="modal-overlay" id="igDlModalOverlay" onclick="handleOverlayClick(event, 'igDlModalOverlay')">
+        <div class="app-modal ig-modal">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <div class="modal-badge-icon"><i class="fab fa-instagram" style="font-size: 1.4rem;"></i></div>
+                    <div class="modal-header-titles"><h3>Instagram Download</h3><p>SnapInsta / FastDL</p></div>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeModal('igDlModalOverlay')"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div style="margin-bottom: 18px;">
+                <label class="field-label" style="display: block;">PASTE INSTAGRAM LINK:</label>
+                <input type="text" id="igUrlInput" placeholder="https://www.instagram.com/reel/..." style="width: 100%; background: #1c2216; border: 1px solid #2d3820; border-radius: 12px; padding: 13px 16px; color: #fff; margin-bottom: 12px;">
+                
+                <div class="dl-options-grid">
+                    <a href="javascript:void(0)" onclick="routeIgVideo()" class="dl-opt-btn" style="background: rgba(244,63,94,0.15); border-color: #f43f5e; color: #f43f5e;"><i class="fas fa-video"></i> Buka SnapInsta (Video)</a>
+                    <a href="javascript:void(0)" onclick="routeIgPhoto()" class="dl-opt-btn" style="background: rgba(230,104,60,0.15); border-color: #e6683c; color: #e6683c;"><i class="fas fa-camera"></i> Buka FastDL (Photo)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
