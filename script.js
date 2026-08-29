@@ -1,9 +1,9 @@
-// Tab Navigation with URL routing
+// Tab Navigation
 function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('show');
 }
 
-function showSection(sectionId, element, pushState = true) {
+function showSection(sectionId, element) {
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     const target = document.getElementById(sectionId);
     if (target) target.classList.add('active');
@@ -13,27 +13,7 @@ function showSection(sectionId, element, pushState = true) {
 
     document.getElementById('navLinks').classList.remove('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    if (pushState) {
-        const urlPath = '/' + sectionId.toLowerCase();
-        history.pushState({ section: sectionId }, '', urlPath);
-    }
 }
-
-function handleRouteChange() {
-    const path = window.location.pathname;
-    let sectionId = 'home';
-    
-    if (path === '/tools') sectionId = 'tools';
-    else if (path === '/tutorial') sectionId = 'tutorial';
-    else if (path === '/home') sectionId = 'home';
-    
-    const navLink = document.querySelector(`.nav-links a[onclick*="${sectionId}"]`);
-    showSection(sectionId, navLink, false);
-}
-
-window.addEventListener('popstate', handleRouteChange);
-document.addEventListener('DOMContentLoaded', handleRouteChange);
 
 function filterTools(query) {
     const q = query.toLowerCase().trim();
