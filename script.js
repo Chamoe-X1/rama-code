@@ -15,7 +15,7 @@ function showSection(sectionId, element, pushState = true) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (pushState) {
-        const urlPath = sectionId === 'home' ? '/' : '/' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+        const urlPath = '/' + sectionId.toLowerCase();
         history.pushState({ section: sectionId }, '', urlPath);
     }
 }
@@ -24,8 +24,9 @@ function handleRouteChange() {
     const path = window.location.pathname;
     let sectionId = 'home';
     
-    if (path === '/Tools' || path === '/tools') sectionId = 'tools';
-    else if (path === '/Tutorial' || path === '/tutorial') sectionId = 'tutorial';
+    if (path === '/tools') sectionId = 'tools';
+    else if (path === '/tutorial') sectionId = 'tutorial';
+    else if (path === '/home') sectionId = 'home';
     
     const navLink = document.querySelector(`.nav-links a[onclick*="${sectionId}"]`);
     showSection(sectionId, navLink, false);
