@@ -57,8 +57,8 @@
           <li>
             <a
               href="javascript:void(0)"
-              onclick="showSection('resources', this)"
-              >Resources</a
+              onclick="showSection('tutorial', this)"
+              >Tutorial</a
             >
           </li>
         </ul>
@@ -98,13 +98,13 @@
             href="javascript:void(0)"
             onclick="
               showSection(
-                'resources',
+                'tutorial',
                 document.querySelectorAll('.nav-links a')[2],
               )
             "
             class="btn-hero-secondary"
           >
-            <i class="fas fa-folder-open"></i> Akses Resources
+            <i class="fas fa-folder-open"></i> Access Tutorials
           </a>
         </div>
 
@@ -287,44 +287,92 @@
       </div>
     </section>
 
-    <!-- RESOURCES SECTION -->
-    <section id="resources">
+    <!-- TUTORIAL SECTION -->
+    <section id="tutorial">
       <div class="section-header-area">
         <div class="section-tag-pill">
-          <i class="fas fa-box-archive"></i> Editor Resources
+          <i class="fas fa-play-circle"></i> Video Tutorials
         </div>
-        <h2 class="section-title">Presets & Creator Assets</h2>
-        <p class="section-subtitle">File project SOCIALBUZZ COMUNITY</p>
+        <h2 class="section-title">Tutorial Library</h2>
+        <p class="section-subtitle">Video guides for Video Editing, Debian, and MikroTik</p>
       </div>
-      <div class="resources-grid">
-        <div class="resource-card">
-          <img
-            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop"
-            alt="Resource"
-            class="resource-image"
-          />
-          <div class="resource-content">
-            <span class="resource-tag">After Effect Project</span>
-            <h3>After Effect Project</h3>
-            <p class="sub-judul">Color Grading & Sharpness Formula</p>
-            <div class="resource-description">
-              <h4>Deskripsi</h4>
-              <p>
-                COMING SOON.
-              </p>
-            </div>
-            <div class="resource-body">-</div>
-            <div class="resource-actions">
-              <a
-                href="javascript:void(0)"
-                onclick="triggerAssetDownload('AM_Preset_HQ_Formula.xml')"
-                class="btn-res-primary"
-                ><i class="fas fa-download"></i>COMING SOON</a
-              >
-            </div>
+
+      <div class="tutorial-tabs">
+        <button class="tutorial-tab active" onclick="switchTutorialTab('video-edit', this)">VIDEO EDIT</button>
+        <button class="tutorial-tab" onclick="switchTutorialTab('video-debian', this)">VIDEO DEBIAN</button>
+        <button class="tutorial-tab" onclick="switchTutorialTab('mikrotik', this)">MIKROTIK</button>
+      </div>
+
+      <div class="tutorial-content">
+        <!-- VIDEO EDIT TAB -->
+        <div id="tab-video-edit" class="tutorial-tab-panel active">
+          <div class="tutorial-empty">
+            <i class="fas fa-video-slash"></i>
+            <p>No video editing tutorials available yet.</p>
           </div>
         </div>
-        <!-- Kartu resource lainnya sama persis seperti versi awal -->
+
+        <!-- VIDEO DEBIAN TAB -->
+        <div id="tab-video-debian" class="tutorial-tab-panel">
+          <div class="tutorial-video-grid">
+            <a href="https://youtu.be/9mCNY_VCyFQ" target="_blank" rel="noopener noreferrer" class="tutorial-video-card">
+              <div class="tutorial-video-thumb">
+                <img src="https://i.ytimg.com/vi/9mCNY_VCyFQ/hqdefault.jpg" alt="NON TRANSPARANT PROXY DEBIAN 12 WITH CLIENT WINDOWS 7">
+                <span class="play-overlay"><i class="fas fa-play"></i></span>
+              </div>
+              <div class="tutorial-video-info">
+                <h4>NON TRANSPARANT PROXY DEBIAN 12 WITH CLIENT WINDOWS 7</h4>
+                <span class="tutorial-video-channel"><i class="fab fa-youtube"></i> RamaYafiq</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- MIKROTIK TAB -->
+        <div id="tab-mikrotik" class="tutorial-tab-panel">
+          <div class="tutorial-video-grid">
+            <a href="https://youtu.be/6E2OlXTJLEg" target="_blank" rel="noopener noreferrer" class="tutorial-video-card">
+              <div class="tutorial-video-thumb">
+                <img src="https://i.ytimg.com/vi/6E2OlXTJLEg/hqdefault.jpg" alt="Konfigurasi IP Address">
+                <span class="play-overlay"><i class="fas fa-play"></i></span>
+              </div>
+              <div class="tutorial-video-info">
+                <h4>Konfigurasi IP Address</h4>
+                <span class="tutorial-video-channel"><i class="fab fa-youtube"></i> RamaYafiq</span>
+              </div>
+            </a>
+            <a href="https://youtu.be/15sSMpBxWBM" target="_blank" rel="noopener noreferrer" class="tutorial-video-card">
+              <div class="tutorial-video-thumb">
+                <img src="https://i.ytimg.com/vi/15sSMpBxWBM/hqdefault.jpg" alt="Queue List bagian Simple Queue">
+                <span class="play-overlay"><i class="fas fa-play"></i></span>
+              </div>
+              <div class="tutorial-video-info">
+                <h4>Queue List bagian Simple Queue</h4>
+                <span class="tutorial-video-channel"><i class="fab fa-youtube"></i> RamaYafiq</span>
+              </div>
+            </a>
+            <a href="https://youtu.be/uwXYl717qQ4" target="_blank" rel="noopener noreferrer" class="tutorial-video-card">
+              <div class="tutorial-video-thumb">
+                <img src="https://i.ytimg.com/vi/uwXYl717qQ4/hqdefault.jpg" alt="SpeedTest (mengetest kecepatan jaringan)">
+                <span class="play-overlay"><i class="fas fa-play"></i></span>
+              </div>
+              <div class="tutorial-video-info">
+                <h4>SpeedTest (mengetest kecepatan jaringan)</h4>
+                <span class="tutorial-video-channel"><i class="fab fa-youtube"></i> RamaYafiq</span>
+              </div>
+            </a>
+            <a href="https://youtu.be/7dkV6v8PyF8" target="_blank" rel="noopener noreferrer" class="tutorial-video-card">
+              <div class="tutorial-video-thumb">
+                <img src="https://i.ytimg.com/vi/7dkV6v8PyF8/hqdefault.jpg" alt="Queue tree">
+                <span class="play-overlay"><i class="fas fa-play"></i></span>
+              </div>
+              <div class="tutorial-video-info">
+                <h4>Queue tree</h4>
+                <span class="tutorial-video-channel"><i class="fab fa-youtube"></i> RamaYafiq</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
