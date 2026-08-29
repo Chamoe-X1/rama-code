@@ -40,6 +40,15 @@ function openTiktokDlModal() { openModal('tiktokDlModalOverlay'); }
 function openYtDlModal() { openModal('ytDlModalOverlay'); }
 function openIgDlModal() { openModal('igDlModalOverlay'); }
 
+/* ==================== TUTORIAL TABS ==================== */
+function switchTutorialTab(tabId, btnElement) {
+    document.querySelectorAll('.tutorial-tab-panel').forEach(panel => panel.classList.remove('active'));
+    document.querySelectorAll('.tutorial-tab').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btnElement.classList.add('active');
+}
+
 /* ==================== AUTO-ROUTING DOWNLOADERS ==================== */
 
 // TikTok -> SSSTik
