@@ -1,4 +1,4 @@
-// Navigasi Tab
+// Tab Navigation
 function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('show');
 }
@@ -45,29 +45,29 @@ function openIgDlModal() { openModal('igDlModalOverlay'); }
 // TikTok -> SSSTik
 function routeTikTok() {
     let url = document.getElementById('tiktokUrlInput').value.trim();
-    if (!url) return alert('Silakan masukkan link TikTok!');
+    if (!url) return alert('Please enter TikTok link!');
     window.open(`https://ssstik.io/id?url=${encodeURIComponent(url)}`, '_blank');
 }
 
 
-// YouTube -> Y2Mate (Menggunakan domain mirror anti-blokir)
+// YouTube -> Y2Mate (Using anti-block mirror domain)
 function routeYouTube() {
     let url = document.getElementById('ytUrlInput').value.trim();
-    if (!url) return alert('Silakan masukkan link YouTube!');
+    if (!url) return alert('Please enter YouTube link!');
     
-    // Melempar URL sebagai query pencarian ke domain mirror
+    // Throw URL as search query to mirror domain
     window.open(`https://www-y2mate.com/id42/?q=${encodeURIComponent(url)}`, '_blank');
 }
 
 // Instagram -> SnapInsta / FastDL
 function routeIgVideo() {
     let url = document.getElementById('igUrlInput').value.trim();
-    if (!url) return alert('Silakan masukkan link Instagram!');
+    if (!url) return alert('Please enter Instagram link!');
     window.open(`https://snapinsta.to/id55?url=${encodeURIComponent(url)}`, '_blank');
 }
 
 function routeIgPhoto() {
     let url = document.getElementById('igUrlInput').value.trim();
-    if (!url) return alert('Silakan masukkan link Instagram!');
+    if (!url) return alert('Please enter Instagram link!');
     window.open(`https://fastdl.app/photo?url=${encodeURIComponent(url)}`, '_blank');
 }
