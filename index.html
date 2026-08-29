@@ -61,6 +61,13 @@
               >Tutorial</a
             >
           </li>
+          <li>
+            <a
+              href="javascript:void(0)"
+              onclick="showSection('project', this)"
+              >Project File</a
+            >
+          </li>
         </ul>
       </div>
     </nav>
@@ -104,7 +111,20 @@
             "
             class="btn-hero-secondary"
           >
-            <i class="fas fa-folder-open"></i> Access Tutorials
+            <i class="fas fa-play-circle"></i> Access Tutorials
+          </a>
+          <a
+            href="javascript:void(0)"
+            onclick="
+              showSection(
+                'project',
+                document.querySelectorAll('.nav-links a')[3],
+              )
+            "
+            class="btn-hero-secondary"
+            style="background: linear-gradient(135deg, #ec4899, #f43f5e); border: none; color: #fff;"
+          >
+            <i class="fas fa-folder-open"></i> Project Files
           </a>
         </div>
 
@@ -370,6 +390,136 @@
                 <h4>Queue tree</h4>
                 <span class="tutorial-video-channel"><i class="fab fa-youtube"></i> RamaYafiq</span>
               </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT FILE SECTION -->
+    <section id="project">
+      <div class="section-header-area">
+        <div class="section-tag-pill">
+          <i class="fas fa-folder-open"></i> Project Files
+        </div>
+        <h2 class="section-title">Project File Store</h2>
+        <p class="section-subtitle">Premium After Effects Presets, LUTs, Templates & Assets</p>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop" alt="Project 1">
+            <span class="project-badge">Premium</span>
+          </div>
+          <div class="project-content">
+            <span class="project-category">After Effects</span>
+            <h3>Color Grading & Sharpness Formula</h3>
+            <p class="project-desc">Preset formula ketajaman 4K Ultra Smooth untuk After Effect agar video terlihat jernih di FYP TikTok.</p>
+            <div class="project-meta">
+              <span class="project-price">Rp 150.000</span>
+              <span class="project-format">.aep + .xml</span>
+            </div>
+            <a href="https://sociabuzz.com/ramaaayp/shop" target="_blank" rel="noopener noreferrer" class="btn-project-buy">
+              <i class="fas fa-shopping-cart"></i> Beli Sekarang
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop" alt="Project 2">
+            <span class="project-badge">Best Seller</span>
+          </div>
+          <div class="project-content">
+            <span class="project-category">LUTs Pack</span>
+            <h3>Cinematic LUTs Collection</h3>
+            <p class="project-desc">Kumpulan 25+ LUT Cinematic untuk grading video dengan tone film profesional, cocok untuk semua kamera.</p>
+            <div class="project-meta">
+              <span class="project-price">Rp 99.000</span>
+              <span class="project-format">.cube + .3dl</span>
+            </div>
+            <a href="https://sociabuzz.com/ramaaayp/shop" target="_blank" rel="noopener noreferrer" class="btn-project-buy">
+              <i class="fas fa-shopping-cart"></i> Beli Sekarang
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1518709592616-9e5e8d5d9e7a?w=600&h=400&fit=crop" alt="Project 3">
+            <span class="project-badge">New</span>
+          </div>
+          <div class="project-content">
+            <span class="project-category">Template</span>
+            <h3>TikTok Viral Template Pack</h3>
+            <p class="project-desc">Template siap pakai untuk konten TikTok/Reels dengan animasi teks, transisi, dan efek trending.</p>
+            <div class="project-meta">
+              <span class="project-price">Rp 120.000</span>
+              <span class="project-format">.aep + .prproj</span>
+            </div>
+            <a href="https://sociabuzz.com/ramaaayp/shop" target="_blank" rel="noopener noreferrer" class="btn-project-buy">
+              <i class="fas fa-shopping-cart"></i> Beli Sekarang
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Project 4">
+          </div>
+          <div class="project-content">
+            <span class="project-category">Sound Design</span>
+            <h3>SFX & Transition Sound Pack</h3>
+            <p class="project-desc">Koleksi 100+ sound effect transition, whoosh, hit, riser untuk editing video yang lebih dinamis.</p>
+            <div class="project-meta">
+              <span class="project-price">Rp 75.000</span>
+              <span class="project-format">.wav + .mp3</span>
+            </div>
+            <a href="https://sociabuzz.com/ramaaayp/shop" target="_blank" rel="noopener noreferrer" class="btn-project-buy">
+              <i class="fas fa-shopping-cart"></i> Beli Sekarang
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop" alt="Project 5">
+          </div>
+          <div class="project-content">
+            <span class="project-category">Preset</span>
+            <h3>Text Animation Presets</h3>
+            <p class="project-desc">50+ preset animasi teks kinetic typography untuk After Effects, one-click apply.</p>
+            <div class="project-meta">
+              <span class="project-price">Rp 85.000</span>
+              <span class="project-format">.ffx</span>
+            </div>
+            <a href="https://sociabuzz.com/ramaaayp/shop" target="_blank" rel="noopener noreferrer" class="btn-project-buy">
+              <i class="fas fa-shopping-cart"></i> Beli Sekarang
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Project 6">
+          </div>
+          <div class="project-content">
+            <span class="project-category">Template</span>
+            <h3>Instagram Reels Bundle</h3>
+            <p class="project-desc">Bundle template Reels aesthetic dengan placeholder foto/video, mudah dikustomisasi.</p>
+            <div class="project-meta">
+              <span class="project-price">Rp 110.000</span>
+              <span class="project-format">.aep + .prproj</span>
+            </div>
+            <a href="https://sociabuzz.com/ramaaayp/shop" target="_blank" rel="noopener noreferrer" class="btn-project-buy">
+              <i class="fas fa-shopping-cart"></i> Beli Sekarang
             </a>
           </div>
         </div>
