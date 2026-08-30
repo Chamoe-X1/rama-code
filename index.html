@@ -34,51 +34,38 @@
           onclick="
             showSection(
               'home',
-              document.querySelector('.nav-links a:first-child'),
+              document.querySelector('.dynamic-island-tab[data-section=\"home\"]'),
             )
           "
         >
           <span>RAMA YAFIQ</span>
           <span class="logo-badge">PRO</span>
         </div>
-        <button
-          class="mobile-menu-btn"
-          onclick="toggleMenu()"
-          aria-label="Toggle navigation menu"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <ul class="nav-links" id="navLinks">
-          <li>
-            <a
-              href="javascript:void(0)"
-              class="active"
-              onclick="showSection('home', this)"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="javascript:void(0)" onclick="showSection('tools', this)"
-              >Tools</a
-            >
-          </li>
-          <li>
-            <a
-              href="javascript:void(0)"
-              onclick="showSection('tutorial', this)"
-              >Tutorial</a
-            >
-          </li>
-          <li>
-            <a
-              href="javascript:void(0)"
-              onclick="showSection('project', this)"
-              >Project File</a
-            >
-          </li>
-        </ul>
       </div>
     </nav>
+
+    <!-- DYNAMIC ISLAND NAVIGATION -->
+    <div class="dynamic-island" id="dynamicIsland">
+      <div class="dynamic-island-inner">
+        <button class="dynamic-island-tab active" data-section="home" onclick="showSection('home', this)">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </button>
+        <button class="dynamic-island-tab" data-section="tools" onclick="showSection('tools', this)">
+          <i class="fas fa-cube"></i>
+          <span>Tools</span>
+        </button>
+        <button class="dynamic-island-tab" data-section="tutorial" onclick="showSection('tutorial', this)">
+          <i class="fas fa-play-circle"></i>
+          <span>Tutorial</span>
+        </button>
+        <button class="dynamic-island-tab" data-section="project" onclick="showSection('project', this)">
+          <i class="fas fa-folder-open"></i>
+          <span>Project</span>
+        </button>
+      </div>
+      <div class="dynamic-island-indicator" id="dynamicIslandIndicator"></div>
+    </div>
 
     <!-- HOME SECTION -->
     <section id="home" class="active">
@@ -103,7 +90,7 @@
           <a
             href="javascript:void(0)"
             onclick="
-              showSection('tools', document.querySelectorAll('.nav-links a')[1])
+              showSection('tools', document.querySelector('.dynamic-island-tab[data-section=\"tools\"]'))
             "
             class="btn-hero-primary"
           >
@@ -114,7 +101,7 @@
             onclick="
               showSection(
                 'tutorial',
-                document.querySelectorAll('.nav-links a')[2],
+                document.querySelector('.dynamic-island-tab[data-section=\"tutorial\"]'),
               )
             "
             class="btn-hero-secondary"
@@ -126,7 +113,7 @@
             onclick="
               showSection(
                 'project',
-                document.querySelectorAll('.nav-links a')[3],
+                document.querySelector('.dynamic-island-tab[data-section=\"project\"]'),
               )
             "
             class="btn-hero-secondary"
@@ -172,6 +159,58 @@
             class="social-card whatsapp"
             ><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a
           >
+        </div>
+
+        <!-- CREATOR PROFILE SECTION -->
+        <div class="creator-profile-section">
+          <div class="creator-card">
+            <div class="creator-avatar-wrapper">
+              <img
+                src="https://instagram.fbth6-1.fna.fbcdn.net/v/t51.82787-19/775858408_17922571185408889_933738346406201416_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fbth6-1.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2gFf9keoWNamTq6nh2xVbYJtkhHz3dcxqnf62jN6ydrcX1siDGuYVdjP_wR8iN9ZsW0&_nc_ohc=2FJ3XEycxYMQ7kNvwEbJeiE&_nc_gid=_epa7U8MkQJZAjEg1w8LOw&edm=APs17CUBAAAA&ccb=7-5&oh=00_AQJe6sNjfPVkpTL_0R4mu409xwC4NQuMt2nwLW3obCf0Aw&oe=6A9A49D1&_nc_sid=10d13b"
+                alt="Rama Yafiq"
+                class="creator-avatar"
+              />
+              <div class="creator-avatar-ring"></div>
+              <span class="creator-badge verified">
+                <i class="fas fa-check"></i>
+                Verified Creator
+              </span>
+            </div>
+            <div class="creator-info">
+              <h2 class="creator-name">Rama Yafiq</h2>
+              <p class="creator-handle">@rramayp_</p>
+              <div class="creator-stats">
+                <div class="stat-item">
+                  <span class="stat-value">10K+</span>
+                  <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">50+</span>
+                  <span class="stat-label">Tools Created</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-value">100+</span>
+                  <span class="stat-label">Tutorials</span>
+                </div>
+              </div>
+              <p class="creator-bio">
+                Creative Developer & Content Creator specializing in video editing tools,
+                media downloaders, and educational content for editors & developers.
+                Building tools that make creative workflows faster and easier.
+              </p>
+              <div class="creator-links">
+                <a href="https://www.youtube.com/@RamaYafiq" target="_blank" rel="noopener noreferrer" class="creator-link youtube">
+                  <i class="fab fa-youtube"></i> YouTube Channel
+                </a>
+                <a href="https://www.instagram.com/rramayp_/" target="_blank" rel="noopener noreferrer" class="creator-link instagram">
+                  <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://sociabuzz.com/ramaaayp" target="_blank" rel="noopener noreferrer" class="creator-link socialbuzz">
+                  <i class="fas fa-bolt"></i> Support Me
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
