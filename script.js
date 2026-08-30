@@ -9,11 +9,51 @@ function showSection(sectionId, element) {
     if (target) target.classList.add('active');
 
     document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-    if (element) element.classList.add('active');
+    document.querySelectorAll('.dynamic-island-tab').forEach(tab => tab.classList.remove('active'));
+
+    if (element) {
+        element.classList.add('active');
+        if (element.classList.contains('dynamic-island-tab')) {
+            updateDynamicIslandIndicator(element);
+        }
+    } else {
+        const diTab = document.querySelector(`.dynamic-island-tab[data-section="${sectionId}"]`);
+        if (diTab) {
+            diTab.classList.add('active');
+            updateDynamicIslandIndicator(diTab);
+        }
+    }
 
     document.getElementById('navLinks').classList.remove('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function updateDynamicIslandIndicator(activeTab) {
+    const indicator = document.getElementById('dynamicIslandIndicator');
+    if (!indicator) return;
+
+    const tabRect = activeTab.getBoundingClientRect();
+    const containerRect = activeTab.parentElement.getBoundingClientRect();
+
+    indicator.style.width = `${tabRect.width}px`;
+    indicator.style.left = `${tabRect.left - containerRect.left}px`;
+}
+
+function initDynamicIsland() {
+    const activeTab = document.querySelector('.dynamic-island-tab.active');
+    if (activeTab) {
+        updateDynamicIslandIndicator(activeTab);
+    }
+
+    window.addEventListener('resize', () => {
+        const activeTab = document.querySelector('.dynamic-island-tab.active');
+        if (activeTab) {
+            updateDynamicIslandIndicator(activeTab);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initDynamicIsland);
 
 function filterTools(query) {
     const q = query.toLowerCase().trim();
