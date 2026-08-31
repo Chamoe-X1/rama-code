@@ -1,12 +1,25 @@
 // Tab Navigation
+const sectionOrder = ['home', 'tools', 'tutorial', 'project'];
+let currentSectionIndex = 0;
+
 function toggleMenu() {
     document.getElementById('navLinks').classList.toggle('show');
 }
 
 function showSection(sectionId, element) {
-    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    const newIndex = sectionOrder.indexOf(sectionId);
+    const direction = newIndex > currentSectionIndex ? 'right' : 'left';
+    currentSectionIndex = newIndex;
+
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active', 'slide-left'));
+    
     const target = document.getElementById(sectionId);
-    if (target) target.classList.add('active');
+    if (target) {
+        if (direction === 'left') {
+            target.classList.add('slide-left');
+        }
+        target.classList.add('active');
+    }
 
     document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
     document.querySelectorAll('.dynamic-island-tab').forEach(tab => tab.classList.remove('active'));
@@ -14,6 +27,11 @@ function showSection(sectionId, element) {
     if (element) {
         element.classList.add('active');
         if (element.classList.contains('dynamic-island-tab')) {
+            // Tap feedback
+            element.style.transform = 'scale(0.92)';
+            requestAnimationFrame(() => {
+                element.style.transform = '';
+            });
             updateDynamicIslandIndicator(element);
         }
     } else {
@@ -28,27 +46,67 @@ function showSection(sectionId, element) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function updateDynamicIslandIndicator(activeTab) {
+function updateDynamicIslandIndicator(activeTab, instant = false) {
     const indicator = document.getElementById('dynamicIslandIndicator');
     if (!indicator) return;
 
-    const tabRect = activeTab.getBoundingClientRect();
-    const containerRect = activeTab.parentElement.getBoundingClientRect();
+    const container = activeTab.parentElement;
+    const tabIndex = Array.from(container.children).indexOf(activeTab);
+    const tabWidth = 44;
+    const gap = 2;
+    const padding = 8;
+    
+    const targetLeft = padding + tabIndex * (tabWidth + gap);
+    const targetWidth = tabWidth;
 
-    indicator.style.width = `${tabRect.width}px`;
-    indicator.style.left = `${tabRect.left - containerRect.left}px`;
+    if (instant || !indicator.dataset.initialized) {
+        indicator.style.transition = 'none';
+        indicator.style.left = `${targetLeft}px`;
+        indicator.style.width = `${targetWidth}px`;
+        indicator.dataset.initialized = 'true';
+        requestAnimationFrame(() => {
+            indicator.style.transition = 'left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+        return;
+    }
+
+    // FLIP Animation (Magic Move style)
+    const currentLeft = parseFloat(indicator.style.left) || targetLeft;
+    const currentWidth = parseFloat(indicator.style.width) || targetWidth;
+    
+    const deltaLeft = currentLeft - targetLeft;
+    const deltaWidth = currentWidth - targetWidth;
+
+    // First: apply inverse transform (no transition)
+    indicator.style.transition = 'none';
+    indicator.style.transform = `translateX(${deltaLeft}px) scaleX(${currentWidth / targetWidth})`;
+    indicator.style.width = `${targetWidth}px`;
+    
+    // Force reflow
+    indicator.offsetHeight;
+    
+    // Last: animate to target (with transition)
+    indicator.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+    indicator.style.transform = 'translateX(0) scaleX(1)';
+    indicator.style.left = `${targetLeft}px`;
+    
+    // Clean up transform after animation
+    setTimeout(() => {
+        indicator.style.transform = '';
+        indicator.style.transition = 'left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+    }, 450);
 }
 
 function initDynamicIsland() {
     const activeTab = document.querySelector('.dynamic-island-tab.active');
     if (activeTab) {
-        updateDynamicIslandIndicator(activeTab);
+        updateDynamicIslandIndicator(activeTab, true); // instant on init
     }
 
     window.addEventListener('resize', () => {
         const activeTab = document.querySelector('.dynamic-island-tab.active');
         if (activeTab) {
-            updateDynamicIslandIndicator(activeTab);
+            updateDynamicIslandIndicator(activeTab, true); // instant on resize
         }
     });
 }
