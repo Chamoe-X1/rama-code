@@ -1,3 +1,106 @@
+// ==================== DEVICE DETECTION & ADAPTIVE ENGINE ====================
+function detectDevice() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    const platform = navigator.platform || '';
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+    
+    let os = 'other';
+    let deviceType = 'desktop';
+    let brandName = 'Desktop PC';
+    let iconClass = 'fas fa-desktop';
+
+    // Detect OS
+    if (/android/i.test(ua)) {
+        os = 'android';
+        brandName = 'Android';
+        iconClass = 'fab fa-android';
+    } else if (/iPad|iPhone|iPod/.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+        os = 'ios';
+        if (/iPad/.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+            brandName = 'iPad';
+            iconClass = 'fas fa-tablet-screen-button';
+        } else {
+            brandName = 'iPhone';
+            iconClass = 'fab fa-apple';
+        }
+    } else if (/Windows/i.test(ua)) {
+        os = 'windows';
+        brandName = 'Windows PC';
+        iconClass = 'fab fa-windows';
+    } else if (/Macintosh|Mac OS X/i.test(ua)) {
+        os = 'macos';
+        brandName = 'Mac';
+        iconClass = 'fab fa-apple';
+    } else if (/Linux/i.test(ua)) {
+        os = 'linux';
+        brandName = 'Linux';
+        iconClass = 'fab fa-linux';
+    }
+
+    // Detect Device Type
+    const isMobileUA = /Mobi|Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+    const isTabletUA = /iPad|Tablet|(Android(?!.*Mobile))/i.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    if (isTabletUA || (isTouch && width >= 600 && width <= 1024)) {
+        deviceType = 'tablet';
+    } else if (isMobileUA || (isTouch && width < 768) || width <= 600) {
+        deviceType = 'mobile';
+    } else {
+        deviceType = 'desktop';
+    }
+
+    const orientation = width > height ? 'landscape' : 'portrait';
+
+    // Apply attributes and classes to HTML and Body
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+
+    htmlEl.setAttribute('data-device', deviceType);
+    htmlEl.setAttribute('data-os', os);
+    htmlEl.setAttribute('data-orientation', orientation);
+    htmlEl.setAttribute('data-touch', isTouch ? 'true' : 'false');
+
+    bodyEl.classList.remove('device-desktop', 'device-mobile', 'device-tablet');
+    bodyEl.classList.add(`device-${deviceType}`);
+    
+    bodyEl.classList.remove('os-windows', 'os-android', 'os-ios', 'os-macos', 'os-linux', 'os-other');
+    bodyEl.classList.add(`os-${os}`);
+
+    if (isTouch) {
+        bodyEl.classList.add('touch-device');
+    } else {
+        bodyEl.classList.remove('touch-device');
+    }
+
+    // Update real viewport height for mobile browsers
+    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+
+    // Update device status badge in footer
+    const badgeText = document.getElementById('deviceStatusText');
+    const badgeIcon = document.getElementById('deviceIcon');
+    if (badgeText && badgeIcon) {
+        const typeLabel = deviceType === 'desktop' ? 'Desktop' : (deviceType === 'mobile' ? 'Mobile' : 'Tablet');
+        badgeText.textContent = `${brandName} (${typeLabel} · ${width}×${height})`;
+        badgeIcon.className = iconClass;
+    }
+
+    return { deviceType, os, orientation, isTouch, width, height };
+}
+
+let resizeTimeout;
+function handleResizeAdaptive() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        detectDevice();
+        const activeTab = document.querySelector('.dynamic-island-tab.active');
+        if (activeTab) {
+            updateDynamicIslandIndicator(activeTab, true);
+        }
+    }, 100);
+}
+
 // Tab Navigation
 const sectionOrder = ['home', 'tools', 'tutorial', 'project'];
 let currentSectionIndex = 0;
@@ -42,22 +145,18 @@ function showSection(sectionId, element) {
         }
     }
 
-    document.getElementById('navLinks').classList.remove('show');
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks) navLinks.classList.remove('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function updateDynamicIslandIndicator(activeTab, instant = false) {
     const indicator = document.getElementById('dynamicIslandIndicator');
-    if (!indicator) return;
+    if (!indicator || !activeTab) return;
 
-    const container = activeTab.parentElement;
-    const tabIndex = Array.from(container.children).indexOf(activeTab);
-    const tabWidth = 44;
-    const gap = 2;
-    const padding = 8;
-    
-    const targetLeft = padding + tabIndex * (tabWidth + gap);
-    const targetWidth = tabWidth;
+    // Use exact DOM measurements to prevent any gepeng or offset on any device
+    const targetLeft = activeTab.offsetLeft;
+    const targetWidth = activeTab.offsetWidth;
 
     if (instant || !indicator.dataset.initialized) {
         indicator.style.transition = 'none';
@@ -65,7 +164,7 @@ function updateDynamicIslandIndicator(activeTab, instant = false) {
         indicator.style.width = `${targetWidth}px`;
         indicator.dataset.initialized = 'true';
         requestAnimationFrame(() => {
-            indicator.style.transition = 'left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+            indicator.style.transition = 'left 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
         });
         return;
     }
@@ -77,7 +176,6 @@ function updateDynamicIslandIndicator(activeTab, instant = false) {
     const deltaLeft = currentLeft - targetLeft;
     const deltaWidth = currentWidth - targetWidth;
 
-    // First: apply inverse transform (no transition)
     indicator.style.transition = 'none';
     indicator.style.transform = `translateX(${deltaLeft}px) scaleX(${currentWidth / targetWidth})`;
     indicator.style.width = `${targetWidth}px`;
@@ -85,30 +183,25 @@ function updateDynamicIslandIndicator(activeTab, instant = false) {
     // Force reflow
     indicator.offsetHeight;
     
-    // Last: animate to target (with transition)
-    indicator.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+    indicator.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
     indicator.style.transform = 'translateX(0) scaleX(1)';
     indicator.style.left = `${targetLeft}px`;
     
-    // Clean up transform after animation
     setTimeout(() => {
         indicator.style.transform = '';
-        indicator.style.transition = 'left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
-    }, 450);
+        indicator.style.transition = 'left 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+    }, 400);
 }
 
 function initDynamicIsland() {
+    detectDevice();
     const activeTab = document.querySelector('.dynamic-island-tab.active');
     if (activeTab) {
-        updateDynamicIslandIndicator(activeTab, true); // instant on init
+        updateDynamicIslandIndicator(activeTab, true);
     }
 
-    window.addEventListener('resize', () => {
-        const activeTab = document.querySelector('.dynamic-island-tab.active');
-        if (activeTab) {
-            updateDynamicIslandIndicator(activeTab, true); // instant on resize
-        }
-    });
+    window.addEventListener('resize', handleResizeAdaptive);
+    window.addEventListener('orientationchange', handleResizeAdaptive);
 }
 
 document.addEventListener('DOMContentLoaded', initDynamicIsland);
@@ -123,12 +216,18 @@ function filterTools(query) {
 
 // Modal Handlers
 function openModal(id) {
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-    document.body.style.overflow = '';
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 function handleOverlayClick(e, id) {
     if (e.target.id === id) closeModal(id);
@@ -143,8 +242,9 @@ function switchTutorialTab(tabId, btnElement) {
     document.querySelectorAll('.tutorial-tab-panel').forEach(panel => panel.classList.remove('active'));
     document.querySelectorAll('.tutorial-tab').forEach(btn => btn.classList.remove('active'));
     
-    document.getElementById('tab-' + tabId).classList.add('active');
-    btnElement.classList.add('active');
+    const panel = document.getElementById('tab-' + tabId);
+    if (panel) panel.classList.add('active');
+    if (btnElement) btnElement.classList.add('active');
 }
 
 /* ==================== AUTO-ROUTING DOWNLOADERS ==================== */
@@ -156,13 +256,10 @@ function routeTikTok() {
     window.open(`https://ssstik.io/id?url=${encodeURIComponent(url)}`, '_blank');
 }
 
-
-// YouTube -> Y2Mate (Using anti-block mirror domain)
+// YouTube -> Y2Mate
 function routeYouTube() {
     let url = document.getElementById('ytUrlInput').value.trim();
     if (!url) return alert('Please enter YouTube link!');
-    
-    // Throw URL as search query to mirror domain
     window.open(`https://www-y2mate.com/id42/?q=${encodeURIComponent(url)}`, '_blank');
 }
 
