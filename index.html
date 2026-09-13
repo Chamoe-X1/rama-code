@@ -14,6 +14,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <!-- GSAP untuk animasi scroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -25,6 +28,17 @@
   </head>
   <body>
     <div class="bg-pattern"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor (desktop only) -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Gradient Orbs -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
 
     <!-- NAVBAR -->
     <nav>
@@ -91,21 +105,24 @@ Download berbagai macam tools editor, Universal HD
             href="https://www.tiktok.com/@ramayafiq._"
             target="_blank"
             rel="noopener noreferrer"
-            class="social-card tiktok"
+            class="social-card tiktok magnetic-btn"
+            data-magnetic
             ><i class="fab fa-tiktok"></i> <span>TikTok</span></a
           >
           <a
             href="https://sociabuzz.com/ramaaayp"
             target="_blank"
             rel="noopener noreferrer"
-            class="social-card socialbuzz"
+            class="social-card socialbuzz magnetic-btn"
+            data-magnetic
             ><i class="fas fa-bolt"></i> <span>SocialBuzz</span></a
           >
           <a
             href="https://wa.me/6285766257864"
             target="_blank"
             rel="noopener noreferrer"
-            class="social-card whatsapp"
+            class="social-card whatsapp magnetic-btn"
+            data-magnetic
             ><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a
           >
         </div>
@@ -166,7 +183,7 @@ Download berbagai macam tools editor, Universal HD
 
     <!-- TOOLS SECTION -->
     <section id="tools">
-      <div class="section-header-area">
+      <div class="section-header-area gsap-reveal">
         <div class="section-tag-pill">
           <i class="fas fa-cube"></i> Creative Tools Suite
         </div>
@@ -189,7 +206,7 @@ Download berbagai macam tools editor, Universal HD
       <div class="tools-grid" id="toolsGrid">
         <!-- Tool 1 -->
         <div
-          class="tool-card"
+          class="tool-card gsap-reveal"
           onclick="openTiktokDlModal()"
           data-title="tiktok download hd video no watermark mp3 tikwm"
         >
@@ -227,7 +244,7 @@ Download berbagai macam tools editor, Universal HD
 
         <!-- Tool 5 -->
         <div
-          class="tool-card"
+          class="tool-card gsap-reveal"
           onclick="openYtDlModal()"
           data-title="youtube download hd 4k 1080p 720p mp3 audio"
         >
@@ -265,7 +282,7 @@ Download berbagai macam tools editor, Universal HD
 
         <!-- Tool 6 -->
         <div
-          class="tool-card"
+          class="tool-card gsap-reveal"
           onclick="openIgDlModal()"
           data-title="instagram download hd reels post stories photo"
         >
@@ -305,7 +322,7 @@ Download berbagai macam tools editor, Universal HD
 
     <!-- TUTORIAL SECTION -->
     <section id="tutorial">
-      <div class="section-header-area">
+      <div class="section-header-area gsap-reveal">
         <div class="section-tag-pill">
           <i class="fas fa-play-circle"></i> Video Tutorials
         </div>
@@ -414,7 +431,7 @@ Download berbagai macam tools editor, Universal HD
 
     <!-- PROJECT FILE SECTION -->
     <section id="project">
-      <div class="section-header-area">
+      <div class="section-header-area gsap-reveal">
         <div class="section-tag-pill">
           <i class="fas fa-folder-open"></i> Project Files
         </div>
@@ -424,7 +441,7 @@ Download berbagai macam tools editor, Universal HD
 
       <div class="project-grid" id="projectGrid">
         <!-- Project 1 -->
-        <div class="project-card">
+        <div class="project-card gsap-reveal">
           <div class="project-image">
             <img src="https://storage.sociabuzz.com/storage/files/profile/influencer/ramaaayp/shop/yGXaYewHRAsjT4NuE8pvb1h6OrgJtCSn_thumb.jpg" alt="Project 1">
             <span class="project-badge">NEW</span>
@@ -444,7 +461,7 @@ Download berbagai macam tools editor, Universal HD
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card">
+        <div class="project-card gsap-reveal">
           <div class="project-image">
             <img src="https://storage.sociabuzz.com/storage/files/profile/influencer/ramaaayp/shop/iBNMCUYbILs9fXHgR75dvorc8u26mKjD_thumb.png" alt="Project 2">
             <span class="project-badge">Best Seller</span>
@@ -464,7 +481,7 @@ Download berbagai macam tools editor, Universal HD
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card">
+        <div class="project-card gsap-reveal">
           <div class="project-image">
             <img src="https://storage.sociabuzz.com/storage/files/profile/influencer/ramaaayp/shop/WsdUF0Ifn5cablJ3VDRSiQZtYLpj1gym_thumb.jpg" alt="Project 3">
             <span class="project-badge">New</span>
@@ -484,7 +501,7 @@ Download berbagai macam tools editor, Universal HD
         </div>
 
         <!-- Project 4 -->
-        <div class="project-card">
+        <div class="project-card gsap-reveal">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Project 4">
           </div>
@@ -503,7 +520,7 @@ Download berbagai macam tools editor, Universal HD
         </div>
 
         <!-- Project 5 -->
-        <div class="project-card">
+        <div class="project-card gsap-reveal">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop" alt="Project 5">
           </div>
@@ -522,7 +539,7 @@ Download berbagai macam tools editor, Universal HD
         </div>
 
         <!-- Project 6 -->
-        <div class="project-card">
+        <div class="project-card gsap-reveal">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Project 6">
           </div>
@@ -743,5 +760,125 @@ Download berbagai macam tools editor, Universal HD
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+      // ==================== PORTFOLIO ANIMATIONS ====================
+
+      // 1. Custom Cursor (desktop only)
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorOutline = document.getElementById('cursorOutline');
+
+      if (window.matchMedia('(pointer: fine)').matches) {
+        window.addEventListener('mousemove', (e) => {
+          cursorDot.style.left = e.clientX + 'px';
+          cursorDot.style.top = e.clientY + 'px';
+          cursorOutline.animate(
+            { left: e.clientX + 'px', top: e.clientY + 'px' },
+            { duration: 500, fill: 'forwards' }
+          );
+        });
+
+        // Cursor scale on hover interactive elements
+        document.querySelectorAll('a, button, .tool-card, .project-card, .social-card, [data-magnetic]').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            cursorOutline.style.width = '60px';
+            cursorOutline.style.height = '60px';
+            cursorOutline.style.backgroundColor = 'rgba(200,240,96,0.1)';
+          });
+          el.addEventListener('mouseleave', () => {
+            cursorOutline.style.width = '40px';
+            cursorOutline.style.height = '40px';
+            cursorOutline.style.backgroundColor = 'transparent';
+          });
+        });
+      } else {
+        // Hide cursor elements on touch devices
+        if (cursorDot) cursorDot.style.display = 'none';
+        if (cursorOutline) cursorOutline.style.display = 'none';
+      }
+
+      // 2. Magnetic Button Effect
+      document.querySelectorAll('[data-magnetic]').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'translate(0, 0)';
+        });
+      });
+
+      // 3. Gradient Orb Parallax on Mouse Move
+      document.addEventListener('mousemove', (e) => {
+        const orbs = document.querySelectorAll('.gradient-orb');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        orbs.forEach((orb, i) => {
+          const speed = (i + 1) * 25;
+          orb.style.transform = `translate(${(0.5 - x) * speed}px, ${(0.5 - y) * speed}px)`;
+        });
+      });
+
+      // 4. GSAP Scroll Reveal
+      if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Set initial state
+        gsap.set('.gsap-reveal', { opacity: 0, y: 50 });
+
+        // Animate on scroll
+        ScrollTrigger.batch('.gsap-reveal', {
+          onEnter: (elements) => {
+            gsap.to(elements, {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out'
+            });
+          },
+          start: 'top 88%'
+        });
+      }
+
+      // 5. Hero section entrance animation
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap !== 'undefined') {
+          const heroEls = document.querySelectorAll('.hero > *');
+          gsap.from(heroEls, {
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: 'power3.out',
+            delay: 0.2
+          });
+        }
+      });
+
+      // 6. Section change → re-trigger reveal for newly visible elements
+      const originalShowSection = window.showSection;
+      window.showSection = function(sectionId, element) {
+        originalShowSection(sectionId, element);
+        // Re-trigger GSAP reveals for the newly active section
+        setTimeout(() => {
+          if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            const section = document.getElementById(sectionId);
+            if (section) {
+              const items = section.querySelectorAll('.gsap-reveal');
+              gsap.to(items, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: 'power3.out'
+              });
+            }
+          }
+        }, 50);
+      };
+    </script>
   </body>
 </html>
