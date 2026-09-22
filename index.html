@@ -40,6 +40,22 @@
     <div class="gradient-orb orb-1"></div>
     <div class="gradient-orb orb-2"></div>
 
+    <!-- IPHONE TOP STATUS BAR -->
+    <header class="iphone-status-bar">
+      <div class="iphone-status-left">
+        <span class="iphone-time" id="iphoneLiveClock">09:41</span>
+      </div>
+      <div class="iphone-top-notch" title="Apple Dynamic Island Sensor Pill">
+        <span class="sensor-camera"></span>
+        <span class="sensor-speaker"></span>
+      </div>
+      <div class="iphone-status-right">
+        <span class="status-icon"><i class="fas fa-signal"></i></span>
+        <span class="status-icon"><i class="fas fa-wifi"></i></span>
+        <span class="status-icon battery"><i class="fas fa-battery-full"></i></span>
+      </div>
+    </header>
+
     <!-- NAVBAR -->
     <nav>
       <div class="nav-container">
@@ -52,6 +68,7 @@
             )
           "
         >
+          <i class="fab fa-apple apple-logo-icon"></i>
           <span>RAMA YAFIQ</span>
           <span class="logo-badge">PRO</span>
         </div>
@@ -204,37 +221,36 @@ Download berbagai macam tools editor, Universal HD
       </div>
 
       <div class="tools-grid" id="toolsGrid">
-        <!-- Tool 1 -->
+        <!-- Tool 1: TikTok -->
         <div
           class="tool-card gsap-reveal"
-          onclick="openTiktokDlModal()"
-          data-title="tiktok download hd video no watermark mp3 tikwm"
+          onclick="openTiktokChoiceModal()"
+          data-title="tiktok download hd video no watermark mp3 tikwm snaptik ssstik"
         >
           <div class="tool-card-top">
             <div
               class="tool-icon-wrapper"
-              style="color: #00f2ea; background: #0c1c1c; border-color: #173636"
+              style="color: #38bdf8; background: rgba(14, 165, 233, 0.12); border-color: rgba(56, 189, 248, 0.3)"
             >
               <i class="fab fa-tiktok"></i>
             </div>
             <span
               class="tool-badge-pill"
               style="
-                color: #00f2ea;
-                border-color: rgba(0, 242, 234, 0.3);
-                background: rgba(0, 242, 234, 0.1);
+                color: #38bdf8;
+                border-color: rgba(56, 189, 248, 0.3);
+                background: rgba(56, 189, 248, 0.1);
               "
-              >SSSTik Routing</span
+              >2 Server Pilihan</span
             >
           </div>
           <h3>TikTok Download HD</h3>
           <p>
-            Auto-routing sistem: Paste link TikTok, langsung terhubung ke
-            prosesor eksternal untuk download tanpa watermark.
+            Langsung akses link downloader TikTok bebas watermark kualitas HD. Pilih SnapTik atau SSSTik.
           </p>
           <div class="tool-card-footer">
-            <span class="tool-cta-text" style="color: #00f2ea"
-              ><i class="fas fa-download"></i> Buka Tool</span
+            <span class="tool-cta-text" style="color: #38bdf8"
+              ><i class="fas fa-external-link-alt"></i> Buka Pilihan Link</span
             >
             <div class="tool-chevron-icon">
               <i class="fas fa-chevron-right"></i>
@@ -242,16 +258,16 @@ Download berbagai macam tools editor, Universal HD
           </div>
         </div>
 
-        <!-- Tool 5 -->
+        <!-- Tool 2: YouTube -->
         <div
           class="tool-card gsap-reveal"
-          onclick="openYtDlModal()"
-          data-title="youtube download hd 4k 1080p 720p mp3 audio"
+          onclick="openDirectLink('https://www-y2mate.com/id42/')"
+          data-title="youtube download hd 4k 1080p 720p mp3 audio y2mate"
         >
           <div class="tool-card-top">
             <div
               class="tool-icon-wrapper"
-              style="color: #ff3333; background: #281010; border-color: #4e1919"
+              style="color: #ff3b30; background: rgba(255, 59, 48, 0.12); border-color: rgba(255, 59, 48, 0.3)"
             >
               <i class="fab fa-youtube"></i>
             </div>
@@ -259,20 +275,19 @@ Download berbagai macam tools editor, Universal HD
               class="tool-badge-pill"
               style="
                 color: #ff4d4d;
-                border-color: rgba(255, 0, 0, 0.3);
-                background: rgba(255, 0, 0, 0.1);
+                border-color: rgba(255, 77, 77, 0.3);
+                background: rgba(255, 77, 77, 0.1);
               "
-              >Y2Mate Routing</span
+              >Y2Mate Direct</span
             >
           </div>
           <h3>YouTube Download HD</h3>
           <p>
-            Auto-routing sistem: Paste link YouTube, sistem ekstrak ID video dan
-            langsung mengarahkan ke halaman Y2Mate.
+            Langsung menuju Y2Mate untuk download video YouTube resolusi tinggi (4K/1080p/720p) atau audio MP3.
           </p>
           <div class="tool-card-footer">
-            <span class="tool-cta-text" style="color: #ff4d4d"
-              ><i class="fas fa-download"></i> Buka Tool</span
+            <span class="tool-cta-text" style="color: #38bdf8"
+              ><i class="fas fa-arrow-up-right-from-square"></i> Buka Link Sekarang</span
             >
             <div class="tool-chevron-icon">
               <i class="fas fa-chevron-right"></i>
@@ -280,16 +295,16 @@ Download berbagai macam tools editor, Universal HD
           </div>
         </div>
 
-        <!-- Tool 6 -->
+        <!-- Tool 3: Instagram -->
         <div
           class="tool-card gsap-reveal"
-          onclick="openIgDlModal()"
-          data-title="instagram download hd reels post stories photo"
+          onclick="openIgChoiceModal()"
+          data-title="instagram download hd reels post stories photo snapinsta fastdl"
         >
           <div class="tool-card-top">
             <div
               class="tool-icon-wrapper"
-              style="color: #f43f5e; background: #270e1c; border-color: #4d1835"
+              style="color: #f43f5e; background: rgba(244, 63, 94, 0.12); border-color: rgba(244, 63, 94, 0.3)"
             >
               <i class="fab fa-instagram"></i>
             </div>
@@ -305,12 +320,11 @@ Download berbagai macam tools editor, Universal HD
           </div>
           <h3>Instagram Download HD</h3>
           <p>
-            Auto-routing sistem ke SnapInsta (untuk video/reels) dan FastDL
-            (untuk foto) secara otomatis dari satu link.
+            Pilihan langsung untuk unduh Reels / Video (SnapInsta) atau Foto HD (FastDL) tanpa watermark.
           </p>
           <div class="tool-card-footer">
-            <span class="tool-cta-text" style="color: #f43f5e"
-              ><i class="fas fa-download"></i> Buka Tool</span
+            <span class="tool-cta-text" style="color: #38bdf8"
+              ><i class="fas fa-external-link-alt"></i> Buka Pilihan Link</span
             >
             <div class="tool-chevron-icon">
               <i class="fas fa-chevron-right"></i>
@@ -584,12 +598,18 @@ Download berbagai macam tools editor, Universal HD
       </div>
     </footer>
 
-    <!-- MODALS (Sesuai original 100%) -->
+    <!-- IPHONE HOME INDICATOR BAR -->
+    <div class="iphone-home-indicator-wrap">
+      <div class="iphone-home-indicator"></div>
+    </div>
 
+    <!-- MODALS / LINK CHOICES -->
+
+    <!-- Modal 1: TikTok Direct Link Choice -->
     <div
       class="modal-overlay"
-      id="tiktokDlModalOverlay"
-      onclick="handleOverlayClick(event, 'tiktokDlModalOverlay')"
+      id="tiktokChoiceModalOverlay"
+      onclick="handleOverlayClick(event, 'tiktokChoiceModalOverlay')"
     >
       <div class="app-modal tiktok-modal">
         <div class="modal-header">
@@ -598,110 +618,64 @@ Download berbagai macam tools editor, Universal HD
               <i class="fab fa-tiktok" style="font-size: 1.4rem"></i>
             </div>
             <div class="modal-header-titles">
-              <h3>TikTok Download HD</h3>
-              <p>Auto-Route ke SSSTik</p>
+              <h3>TikTok Downloader HD</h3>
+              <p>Pilih server downloader yang diinginkan</p>
             </div>
           </div>
           <button
             type="button"
             class="modal-close-btn"
-            onclick="closeModal('tiktokDlModalOverlay')"
+            onclick="closeModal('tiktokChoiceModalOverlay')"
           >
             <i class="fas fa-xmark"></i>
           </button>
         </div>
-        <div style="margin-bottom: 18px">
-          <label class="field-label" style="display: block"
-            >PASTE TIKTOK URL:</label
+
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;">
+          Klik server di bawah untuk langsung menuju situs download video TikTok tanpa watermark:
+        </p>
+
+        <div class="choice-modal-grid">
+          <a
+            href="https://snaptik.net/id"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="choice-card-btn snaptik"
           >
-          <div style="display: flex; gap: 8px">
-            <input
-              type="text"
-              id="tiktokUrlInput"
-              placeholder="https://www.tiktok.com/@username/video/..."
-              style="
-                flex: 1;
-                background: #1c2216;
-                border: 1px solid #2d3820;
-                border-radius: 12px;
-                padding: 13px 16px;
-                color: #fff;
-              "
-            />
-            <button
-              type="button"
-              class="btn-action-block ready"
-              style="width: auto; padding: 0 22px"
-              onclick="routeTikTok()"
-            >
-              <i class="fas fa-bolt"></i> Route
-            </button>
-          </div>
+            <div class="choice-card-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="choice-card-info">
+              <h4>SnapTik (Rekomendasi)</h4>
+              <span>https://snaptik.net/id · Download HD No Watermark</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square choice-card-arrow"></i>
+          </a>
+
+          <a
+            href="https://ssstik.io/id"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="choice-card-btn ssstik"
+          >
+            <div class="choice-card-icon">
+              <i class="fas fa-cloud-arrow-down"></i>
+            </div>
+            <div class="choice-card-info">
+              <h4>SSSTik</h4>
+              <span>https://ssstik.io/id · Server Alternatif HD & MP3</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square choice-card-arrow"></i>
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- Modal 5: YouTube Routing -->
+    <!-- Modal 2: Instagram Direct Link Choice -->
     <div
       class="modal-overlay"
-      id="ytDlModalOverlay"
-      onclick="handleOverlayClick(event, 'ytDlModalOverlay')"
-    >
-      <div class="app-modal yt-modal">
-        <div class="modal-header">
-          <div class="modal-header-left">
-            <div class="modal-badge-icon">
-              <i class="fab fa-youtube" style="font-size: 1.4rem"></i>
-            </div>
-            <div class="modal-header-titles">
-              <h3>YouTube Download HD</h3>
-              <p>Auto-Route ke Y2Mate</p>
-            </div>
-          </div>
-          <button
-            type="button"
-            class="modal-close-btn"
-            onclick="closeModal('ytDlModalOverlay')"
-          >
-            <i class="fas fa-xmark"></i>
-          </button>
-        </div>
-        <div style="margin-bottom: 18px">
-          <label class="field-label" style="display: block"
-            >PASTE YOUTUBE URL:</label
-          >
-          <div style="display: flex; gap: 8px">
-            <input
-              type="text"
-              id="ytUrlInput"
-              placeholder="https://www.youtube.com/watch?v=..."
-              style="
-                flex: 1;
-                background: #1c2216;
-                border: 1px solid #2d3820;
-                border-radius: 12px;
-                padding: 13px 16px;
-                color: #fff;
-              "
-            />
-            <button
-              type="button"
-              class="btn-action-block ready"
-              style="width: auto; padding: 0 22px"
-              onclick="routeYouTube()"
-            >
-              <i class="fas fa-search"></i> Route
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal 6: IG Routing -->
-    <div
-      class="modal-overlay"
-      id="igDlModalOverlay"
-      onclick="handleOverlayClick(event, 'igDlModalOverlay')"
+      id="igChoiceModalOverlay"
+      onclick="handleOverlayClick(event, 'igChoiceModalOverlay')"
     >
       <div class="app-modal ig-modal">
         <div class="modal-header">
@@ -710,61 +684,55 @@ Download berbagai macam tools editor, Universal HD
               <i class="fab fa-instagram" style="font-size: 1.4rem"></i>
             </div>
             <div class="modal-header-titles">
-              <h3>Instagram Download</h3>
-              <p>SnapInsta / FastDL</p>
+              <h3>Instagram Downloader HD</h3>
+              <p>Pilih downloader untuk Video/Reels atau Foto</p>
             </div>
           </div>
           <button
             type="button"
             class="modal-close-btn"
-            onclick="closeModal('igDlModalOverlay')"
+            onclick="closeModal('igChoiceModalOverlay')"
           >
             <i class="fas fa-xmark"></i>
           </button>
         </div>
-        <div style="margin-bottom: 18px">
-          <label class="field-label" style="display: block"
-            >PASTE INSTAGRAM LINK:</label
-          >
-          <input
-            type="text"
-            id="igUrlInput"
-            placeholder="https://www.instagram.com/reel/..."
-            style="
-              width: 100%;
-              background: #1c2216;
-              border: 1px solid #2d3820;
-              border-radius: 12px;
-              padding: 13px 16px;
-              color: #fff;
-              margin-bottom: 12px;
-            "
-          />
 
-          <div class="dl-options-grid">
-            <a
-              href="javascript:void(0)"
-              onclick="routeIgVideo()"
-              class="dl-opt-btn"
-              style="
-                background: rgba(244, 63, 94, 0.15);
-                border-color: #f43f5e;
-                color: #f43f5e;
-              "
-              ><i class="fas fa-video"></i> Buka SnapInsta (Video)</a
-            >
-            <a
-              href="javascript:void(0)"
-              onclick="routeIgPhoto()"
-              class="dl-opt-btn"
-              style="
-                background: rgba(230, 104, 60, 0.15);
-                border-color: #e6683c;
-                color: #e6683c;
-              "
-              ><i class="fas fa-camera"></i> Buka FastDL (Photo)</a
-            >
-          </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;">
+          Pilih server unduhan sesuai format media Instagram yang kamu inginkan:
+        </p>
+
+        <div class="choice-modal-grid">
+          <a
+            href="https://snapinsta.to/id55"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="choice-card-btn snapinsta"
+          >
+            <div class="choice-card-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="choice-card-info">
+              <h4>SnapInsta (Video & Reels)</h4>
+              <span>Download Reels, Stories & Video Instagram HD</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square choice-card-arrow"></i>
+          </a>
+
+          <a
+            href="https://fastdl.app/photo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="choice-card-btn fastdl"
+          >
+            <div class="choice-card-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <div class="choice-card-info">
+              <h4>FastDL (Foto & Post)</h4>
+              <span>Download Foto Postingan & Carousel Instagram HD</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square choice-card-arrow"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -793,7 +761,7 @@ Download berbagai macam tools editor, Universal HD
           el.addEventListener('mouseenter', () => {
             cursorOutline.style.width = '60px';
             cursorOutline.style.height = '60px';
-            cursorOutline.style.backgroundColor = 'rgba(200,240,96,0.1)';
+            cursorOutline.style.backgroundColor = 'rgba(56, 189, 248, 0.15)';
           });
           el.addEventListener('mouseleave', () => {
             cursorOutline.style.width = '40px';
