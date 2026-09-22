@@ -193,8 +193,20 @@ function updateDynamicIslandIndicator(activeTab, instant = false) {
     }, 400);
 }
 
+function updateIPhoneClock() {
+    const clockEl = document.getElementById('iphoneLiveClock');
+    if (!clockEl) return;
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    clockEl.textContent = `${hours}:${minutes}`;
+}
+
 function initDynamicIsland() {
     detectDevice();
+    updateIPhoneClock();
+    setInterval(updateIPhoneClock, 1000);
+    
     const activeTab = document.querySelector('.dynamic-island-tab.active');
     if (activeTab) {
         updateDynamicIslandIndicator(activeTab, true);
@@ -233,9 +245,20 @@ function handleOverlayClick(e, id) {
     if (e.target.id === id) closeModal(id);
 }
 
-function openTiktokDlModal() { openModal('tiktokDlModalOverlay'); }
-function openYtDlModal() { openModal('ytDlModalOverlay'); }
-function openIgDlModal() { openModal('igDlModalOverlay'); }
+// Choice Modal Trigger & Direct Link
+function openTiktokChoiceModal() {
+    openModal('tiktokChoiceModalOverlay');
+}
+
+function openIgChoiceModal() {
+    openModal('igChoiceModalOverlay');
+}
+
+function openDirectLink(url) {
+    if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
+}
 
 /* ==================== TUTORIAL TABS ==================== */
 function switchTutorialTab(tabId, btnElement) {
@@ -245,33 +268,4 @@ function switchTutorialTab(tabId, btnElement) {
     const panel = document.getElementById('tab-' + tabId);
     if (panel) panel.classList.add('active');
     if (btnElement) btnElement.classList.add('active');
-}
-
-/* ==================== AUTO-ROUTING DOWNLOADERS ==================== */
-
-// TikTok -> SSSTik
-function routeTikTok() {
-    let url = document.getElementById('tiktokUrlInput').value.trim();
-    if (!url) return alert('Please enter TikTok link!');
-    window.open(`https://ssstik.io/id?url=${encodeURIComponent(url)}`, '_blank');
-}
-
-// YouTube -> Y2Mate
-function routeYouTube() {
-    let url = document.getElementById('ytUrlInput').value.trim();
-    if (!url) return alert('Please enter YouTube link!');
-    window.open(`https://www-y2mate.com/id42/?q=${encodeURIComponent(url)}`, '_blank');
-}
-
-// Instagram -> SnapInsta / FastDL
-function routeIgVideo() {
-    let url = document.getElementById('igUrlInput').value.trim();
-    if (!url) return alert('Please enter Instagram link!');
-    window.open(`https://snapinsta.to/id55?url=${encodeURIComponent(url)}`, '_blank');
-}
-
-function routeIgPhoto() {
-    let url = document.getElementById('igUrlInput').value.trim();
-    if (!url) return alert('Please enter Instagram link!');
-    window.open(`https://fastdl.app/photo?url=${encodeURIComponent(url)}`, '_blank');
 }
