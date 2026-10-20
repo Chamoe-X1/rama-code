@@ -53,11 +53,13 @@ function updateDockIndicator(activeTab) {
   const indicator = document.getElementById('dockIndicator');
   if (!indicator || !activeTab) return;
 
-  const left = activeTab.offsetLeft;
-  const width = activeTab.offsetWidth;
+  requestAnimationFrame(() => {
+    const left = activeTab.offsetLeft;
+    const width = activeTab.offsetWidth;
 
-  indicator.style.left = `${left}px`;
-  indicator.style.width = `${width}px`;
+    indicator.style.left = `${left}px`;
+    indicator.style.width = `${width}px`;
+  });
 }
 
 // ==================== TUTORIAL TAB SWITCHER ====================
@@ -166,16 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init Device Detector
   detectDeviceAndSystem();
 
-  // Init Dock Indicator
+  // Init Dock Indicator with multi-pass to ensure fonts and layout settle
   const initialActiveTab = document.querySelector('.dock-tab.active');
   if (initialActiveTab) {
-    setTimeout(() => updateDockIndicator(initialActiveTab), 100);
+    setTimeout(() => updateDockIndicator(initialActiveTab), 50);
+    setTimeout(() => updateDockIndicator(initialActiveTab), 250);
   }
 
-  // Window Resize
-  window.addEventListener('resize', () => {
+  // Window Resize & Orientation Change
+  const handleViewportChange = () => {
     const activeTab = document.querySelector('.dock-tab.active');
     if (activeTab) updateDockIndicator(activeTab);
+  };
+  window.addEventListener('resize', handleViewportChange);
+  window.addEventListener('orientationchange', () => {
+    setTimeout(handleViewportChange, 150);
   });
 
   // Interactive Cursor Light (Desktop)
